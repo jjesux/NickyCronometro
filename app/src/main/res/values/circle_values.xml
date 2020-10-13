@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="left">40</dimen>
+    <dimen name="top">40</dimen>
+    <dimen name="right">-40</dimen>
+    <dimen name="botton">-40</dimen>
+    <dimen name="separacion">25</dimen>
+</resources>

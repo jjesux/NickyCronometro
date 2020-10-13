@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".MainActivity"
+    tools:layout_editor_absolutelyY="81dp"
+    tools:layout_editor_absolutelyX="odp">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        style="@style/nikyTxtStyleEnable"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="7dp" />
+
+    <com.jjesuxyz.cronometro.CronoAnimacion
+        android:id="@+id/vwId"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/button_focused"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="52dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/chronometer2"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.502"
+        />
+
+    <Chronometer
+        android:id="@+id/chronometer2"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        style="@style/nikyTxtStyleEnable"
+        android:textScaleX="2"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textAlignment="center"
+        android:background="@drawable/button_estilo"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutId"
+        android:layout_marginBottom="15dp" />
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayoutId"
+        android:background="@drawable/button_estilo"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayoutHeaderId">
+
+        <Button
+            android:id="@+id/btnStartId"
+            android:layout_width="65dp"
+            android:layout_height="45dp"
+            android:layout_marginRight="7dp"
+            android:background="@drawable/button_estilo"
+            android:enabled="true"
+            android:text="@string/btn_start"
+            style="@style/nikyTxtStyleEnable"
+            tools:layout_editor_absoluteY="254dp"
+            tools:layout_editor_absoluteX="43dp" />
+
+        <Button
+            android:id="@+id/btnPauseId"
+            android:layout_width="65dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="7dp"
+            android:background="@drawable/button_estilo"
+            android:enabled="false"
+            android:text="@string/btn_pause"
+            style="@style/nikyTxtStyleUnable"
+            tools:layout_editor_absoluteY="254dp"
+            tools:layout_editor_absoluteX="126dp" />
+
+        <Button
+            android:id="@+id/btnLapId"
+            android:layout_width="65dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp"
+            android:background="@drawable/button_estilo"
+            android:enabled="false"
+            android:text="@string/btn_lap"
+            style="@style/nikyTxtStyleUnable"
+            tools:layout_editor_absoluteY="254dp"
+            tools:layout_editor_absoluteX="203dp" />
+
+        <Button
+            android:id="@+id/btnStoryId"
+            android:layout_width="65dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="0dp"
+            android:background="@drawable/button_estilo"
+            android:text="@string/btn_story"
+            style="@style/nikyTxtStyleEnable"
+            android:enabled="true"
+            tools:layout_editor_absoluteY="254dp"
+            tools:layout_editor_absoluteX="278dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutHeaderId"
+        android:layout_width="300dp"
+        android:layout_height="31dp"
+        android:orientation="horizontal"
+        android:weightSum="12"
+        android:background="@drawable/button_estilo"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:padding="0dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/listVwId" >
+
+        <TextView
+            android:id="@+id/txtVwIndexId"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:paddingLeft="4dp"
+            android:text="[#]"
+            style="@style/nikyTxtStyleEnable"
+            android:gravity="center_vertical"/>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="#0000FF"/>
+
+        <TextView
+            android:id="@+id/txtVwStartId"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:paddingLeft="5dp"
+            android:text="START"
+            style="@style/nikyTxtStyleEnable"
+            android:gravity="center_vertical"/>
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackground"/>
+
+        <TextView
+            android:id="@+id/txtVwDurationId"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:paddingLeft="5dp"
+            android:text="DURATION"
+            style="@style/nikyTxtStyleEnable"
+            android:gravity="center_vertical"/>
+
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listVwId"
+        android:layout_width="300dp"
+        android:layout_height="147dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/button_estilo"
+        android:divider="#00006F"
+        android:dividerHeight="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_editor_absoluteY="348dp" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

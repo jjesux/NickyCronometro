@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/button_estilo"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="2dp"
+    android:orientation="horizontal"
+    android:weightSum="20">
+
+
+
+    <TextView
+        android:id="@+id/txtvwDateTimeDBId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        style="@style/nikyTxtStyleEnable"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="9"/>
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:background="#0000FF"/>
+
+    <TextView
+        android:id="@+id/txtvwLapDuraDBId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        style="@style/nikyTxtStyleEnable"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="3"/>
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:background="#0000FF"/>
+
+    <TextView
+        android:id="@+id/txtvwLapDistDBId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        style="@style/nikyTxtStyleEnable"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="3"/>
+
+    <View
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:background="#0000FF"/>
+
+    <TextView
+        android:id="@+id/txtvwLapLocDBId"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text=""
+        style="@style/nikyTxtStyleEnable"
+        android:textAlignment="textStart"
+        android:layout_gravity="start"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="5dp"
+        android:layout_weight="5"/>
+
+</LinearLayout>
+
+

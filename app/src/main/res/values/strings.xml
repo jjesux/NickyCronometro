@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="app_name">CRONOMETRO</string>
+    <string name="btn_start">Start</string>
+    <string name="btn_stop">Stop</string>
+    <string name="btn_pause">Pause</string>
+    <string name="btn_lap">Laps</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_story">Story</string>
+    <string name="btn_close_view">Close View</string>
+    <string name="txtvw_msg">Lap Information</string>
+    <string name="txtvw_datetime">Date/Time</string>
+    <string name="txtvw_lapdur">Duration</string>
+    <string name="txtvw_lapdist">Distance</string>
+    <string name="txtvw_laploc">Location</string>
+
+</resources>
