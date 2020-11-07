@@ -1,8 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--All these values are used to set the size of the three circles that this
+    app will draw and animated.-->
 <resources>
-    <dimen name="left">40</dimen>
-    <dimen name="top">40</dimen>
-    <dimen name="right">-40</dimen>
-    <dimen name="botton">-40</dimen>
-    <dimen name="separacion">25</dimen>
+    <!--Circle representing hours -->
+    <integer name="l_crcl_rec_sz">40</integer>
+    <integer name="t_crcl_rec_sz">40</integer>
+    <integer name="r_crcl_rec_sz">40</integer>
+    <integer name="b_crcl_rec_sz">40</integer>
+
+    <!--Circle representing seconds. -->
+    <integer name="left_sec">50</integer>
+    <integer name="top_sec">50</integer>
+    <integer name="right_sec">-50</integer>
+    <integer name="botton_sec">-50</integer>
+
+    <!--Circle representing minutes. -->
+    <integer name="left_min">25</integer>
+    <integer name="top_min">25</integer>
+    <integer name="right_min">-25</integer>
+    <integer name="botton_min">-25</integer>
+
+    <!-- Not used so far. -->
+    <integer name="separacion">25</integer>
+
+    <!--Representing the 12th hour, where circles start to be drawn. -->
+    <integer name="start_angle">270</integer>
+    <!--It is the size of the line or arch from the center of the circle to the
+        circumference.-->
+    <integer name="sweep_angle">3</integer>
+    <!--The 6 degrees representing 1 sec, 1 min and 1 hour. 360/6=60 -->
+    <integer name="arch_increment_by_time">6</integer>
 </resources>

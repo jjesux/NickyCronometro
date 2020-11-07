@@ -40,6 +40,11 @@ public class CronoAnimacion extends View {
                                   //Var holds the change of the arc as one
                                   //hour pass.
     private float anguloHrs;
+
+    private float startAngle;
+    private float sweepAngle;
+    private final float DIAMETRO = 360.0f;
+    private float archIncrmntByTime;
                                   //Var let know the onDraw function when to
                                   //draw on the View
     private boolean boolChronoStarted = false;
@@ -61,8 +66,8 @@ public class CronoAnimacion extends View {
         this.context = context;
                                   //Paint object to set line width and color.
         paint = new Paint();
-                                  //Setting the radios of the three circles to
-                                  //be drawn.
+                                  //Initializing to zero the radios of the
+                                  //three circles to be drawn.
         rectFHrs  = new RectF(0, 0, 0, 0);
         rectFMins = new RectF(0, 0, 0, 0);
         rectFSecs = new RectF(0, 0, 0, 0);
@@ -72,16 +77,51 @@ public class CronoAnimacion extends View {
         anguloMins = 0.0f;
         anguloHrs  = 0.0f;
 
+        startAngle = new Float(getResources().getInteger(R.integer.start_angle));
+        sweepAngle = new Float(getResources().getInteger(R.integer.sweep_angle));
+        archIncrmntByTime = new Float(getResources().getInteger(R.integer.arch_increment_by_time));
+
     }   //End of CronoAnimacion() constructor
 
 
 
-
+    /**
+     * setCircleSize(int, int, int, int) function is used to set the size of the
+     * three circles that this app will draw to represent the time that has been
+     * measured. There is a circle representing seconds, minutes and hours.
+     * The parameters it receives are the size of the circle representing the
+     * hours time, but the size of the other circles are derived from these
+     * parameters.
+     *
+     * @param left
+     * @param top
+     * @param right
+     * @param botton
+     */
     public void setCircleSize(int left, int top, int right, int botton) {
+                                  //Getting values to set the size of the circle
+                                  //representing the seconds.
+        int left_sec = getResources().getInteger( R.integer.left_sec);
+        int top_sec = getResources().getInteger( R.integer.top_sec);
+        int right_sec = getResources().getInteger( R.integer.right_sec);
+        int botton_sec = getResources().getInteger( R.integer.botton_sec);
+                                  //Getting values to set the size of the circle
+                                  //representing the minutes.
+        int left_min = getResources().getInteger( R.integer.left_min);
+        int top_min = getResources().getInteger( R.integer.top_min);
+        int right_min = getResources().getInteger( R.integer.right_min);
+        int botton_min = getResources().getInteger( R.integer.botton_min);
+                                  //Size of the Rectangle holding inside the hours
+                                  //circle.
         rectFHrs.set(left, top, right, botton);
-        rectFMins.set(left + 25, top + 25, right - 25, botton - 25);
-        rectFSecs.set(left + 50, top + 50, right - 50, botton - 50);
-    }
+                                  //Size of the Rectangle holding inside the minutes
+                                  //circle.
+        rectFMins.set(left + left_min, top + top_min, right + right_min, botton + botton_min);
+                                  //Size of the Rectangle holding inside the seconds
+                                  //circle.
+        rectFSecs.set(left + left_sec, top + top_sec, right + right_sec, botton + botton_sec);
+
+    }   //End of setCircleSize(int, int, int, int) function.
 
 
 
@@ -101,15 +141,16 @@ public class CronoAnimacion extends View {
                                   //Setting the style of the hand clock line.
         paint.setStyle(Paint.Style.FILL);
                                   //Drawing the hand clock arc.
-        canvas.drawArc(rectFSecs, 270f + anguloSecs, 3.0f, true, paint);
+        canvas.drawArc(rectFSecs, startAngle + anguloSecs, sweepAngle, true, paint);
+
                                   //Resetting the style to draw circles
         paint.setStyle(Paint.Style.STROKE);
                                   //Drawing the circle of seconds.
-        canvas.drawArc(rectFSecs, 270f, anguloSecs, false, paint);
+        canvas.drawArc(rectFSecs, startAngle, anguloSecs, false, paint);
                                   //Drawing the circle of minutes.
-        canvas.drawArc(rectFMins, 270f, anguloMins, false, paint);
+        canvas.drawArc(rectFMins, startAngle, anguloMins, false, paint);
                                   //Drawing the circle of hours.
-        canvas.drawArc(rectFHrs, 270f, anguloHrs, false, paint);
+        canvas.drawArc(rectFHrs, startAngle, anguloHrs, false, paint);
                                   //Checking if the user has started the chronometer.
         if (boolChronoStarted == true) {
                                   //Recalling update function to check if values
@@ -131,21 +172,21 @@ public class CronoAnimacion extends View {
     private void update() {
                                   //Setting the new value of the second arc
                                   //after one second.
-        anguloSecs = anguloSecs + 6.0f;
+        anguloSecs = anguloSecs + archIncrmntByTime;   //6.0f;
                                   //Checking if the second arc has reach the
                                   //60 seconds
-        if(anguloSecs >= 360.0f) {
+        if(anguloSecs >= DIAMETRO) {//360.0f) {
                                   //Resetting second arc value to zero.
             anguloSecs = 0.0f;
                                   //Incrementing one minute the minute arc.
-            anguloMins = anguloMins + 6.0f;
+            anguloMins = anguloMins + archIncrmntByTime;      //6.0f;
                                   //Checking if the minute arc has reach the
                                   //60 minutes.
-            if (anguloMins >= 360.0f) {
+            if (anguloMins >= DIAMETRO) {
                                   //Resetting the minute arc to zero.
                 anguloMins = 0.0f;
                                   //Incrementing one hour the hour arc.
-                anguloHrs = anguloHrs + 6.0f;
+                anguloHrs = anguloHrs + archIncrmntByTime;        //6.0f;
             }
         }
     }   //End of update() function
@@ -167,9 +208,9 @@ public class CronoAnimacion extends View {
     public void invalidateOnDraw(int hrs, int mins, int secs) {
                                   //Readjusting the arc dimensions with new values
                                   // after one second of time has passed.
-        anguloHrs = (float) hrs * 6.0f;
-        anguloMins = (float) mins * 6.0f;
-        anguloSecs = (float) secs * 6.0f;
+        anguloHrs = (float) hrs * archIncrmntByTime;          //6.0f;
+        anguloMins = (float) mins * archIncrmntByTime;        //6.0f;
+        anguloSecs = (float) secs * archIncrmntByTime;          //6.0f;
                                   //Calling invalidate to indirectly call the
                                   //onDraw function.
         invalidate();

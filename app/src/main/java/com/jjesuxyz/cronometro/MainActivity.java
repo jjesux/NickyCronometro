@@ -82,7 +82,7 @@ public class MainActivity extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
                                   //ListView to show users a list of lap times
-                                  // info.
+                                  //info.
         ListView listView;
                                   //Asserting database exist or has been created.
         DBAccess dbAccess = new DBAccess(getApplicationContext());
@@ -226,15 +226,15 @@ public class MainActivity extends FragmentActivity
      */
     //@Override
     public void onClickingOkNoOkBtn(boolean saveQ) {
-        //User click OK button on the Dialog to saved data
+                                  //User click OK button on the Dialog to saved data
         if (saveQ == true){
-            //Getting access to DB to save data
+                                  //Getting access to DB to save data
             //DBDataMngmt dbDataMngmt = new DBDataMngmt(getApplicationContext());
-            //Inserting row of data into DB
+                                  //Inserting row of data into DB
             //dbDataMngmt.insertMultipleRecordsIntoLapTimeTable(lapInfo);
             Toast.makeText(this, "Lap Time Data Saved.", Toast.LENGTH_SHORT).show();
         }
-        else {                          //If user does not want to save lap time data
+        else {                    //If user does not want to save lap time data
             Toast.makeText(this, "Lap Time Data was NOT saved.", Toast.LENGTH_SHORT).show();
         }
 
@@ -326,7 +326,22 @@ public class MainActivity extends FragmentActivity
                         chrono.setBase(SystemClock.elapsedRealtime() - 0 * 1000);
                         lapTimeBegin = SystemClock.elapsedRealtime();
                                   //View animation starts to draw circle animation.
-                        cronoAnimacion.setCircleSize(40, 40, cronoAnimacion.getWidth() - 40, cronoAnimacion.getHeight() - 40);
+                                  //El circulo se hace mas grande entre mas chico sea
+                                  //el valor de los argumentos que se le mandan a la
+                                  //funcion.  Llegaria un momento en que quedaria fuera
+                                  //del rectangulo que lo contiene.
+
+                                  //Getting circle values from circle_values.xml file.
+                        int leftTmp = getResources().getInteger(R.integer.l_crcl_rec_sz);
+                        int topTmp = getResources().getInteger(R.integer.t_crcl_rec_sz);
+                        int rightTmp = getResources().getInteger(R.integer.r_crcl_rec_sz);
+                        int bottonTmp = getResources().getInteger(R.integer.b_crcl_rec_sz);
+
+                        cronoAnimacion.setCircleSize(leftTmp,
+                                                     topTmp,
+                                               cronoAnimacion.getWidth() - rightTmp,
+                                             cronoAnimacion.getHeight() - bottonTmp);
+
                         cronoAnimacion.setBoolChronoStarted(true);
                         chrono.start();
                                   //Resetting pause, lap and start/stop buttons.
@@ -336,7 +351,7 @@ public class MainActivity extends FragmentActivity
                         btnLaps.setEnabled(true);
                         btnLaps.setTextColor(ContextCompat.getColor(getApplicationContext(), R.color.colorLetrasEnable));//Color.parseColor("#0000FF"));
                                   //Setting vars to new values when chronometer is
-                                  // started.
+                                  //started.
                         if (boolIsDataToSave == true) {
                             listVwAdaptador.updateValues(arrStrLaps);
                             counter = 0;
@@ -361,14 +376,14 @@ public class MainActivity extends FragmentActivity
                         btnLaps.setEnabled(false);
                         btnLaps.setTextColor(Color.parseColor("#686b6d"));
                                   //When stop button clicked, insert last lap time
-                                  // into the ListView.
+                                  //into the ListView.
                         if (boolIsDataToSave == true) {
                             btnLaps.performClick();
                                   //Ask user if data should be saved.
                             wantToSavedDataQ();
                         }
                                   //If chronometer is paused again the
-                                  // time paused is set to zero.
+                                  //time paused is set to zero.
                         lapTimeBegin = 0;
                     }
                     break;
@@ -428,7 +443,7 @@ public class MainActivity extends FragmentActivity
                                   //hrs/mins/secs.
                     lapSecs = (lapTimeTotal / 1000) % 60;
                     lapMins = (lapTimeTotal / (1000 * 60)) % 60;
-                    lapHrs = (lapTimeTotal / ((1000 * 60) * 60)) % 60;
+                    lapHrs  = (lapTimeTotal / ((1000 * 60) * 60)) % 60;
                     lapTimeBegin = lapTimeEnd;
                     lapTimeEnd = 0;
                                   //Letting app know that there is new lap time
