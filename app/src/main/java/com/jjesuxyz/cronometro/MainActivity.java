@@ -66,7 +66,9 @@ public class MainActivity extends FragmentActivity
                                   //Counter to index the laps inserted in the
                                   // ListView
     private int counter = 0;
-
+                                  //Variable to know when to save lap data when
+                                  //the back button is clicked.
+    private boolean dataToSavedOnBackBtn = false;
 
 
 
@@ -225,7 +227,7 @@ public class MainActivity extends FragmentActivity
      * @param saveQ type boolean
      */
     //@Override
-    public void onClickingOkNoOkBtn(boolean saveQ) {
+    public void XXXXXXXonClickingOkNoOkBtn(boolean saveQ) {
                                   //User click OK button on the Dialog to saved data
         if (saveQ == true){
                                   //Getting access to DB to save data
@@ -276,9 +278,15 @@ public class MainActivity extends FragmentActivity
             DBDataMngmt dbDataMngmt = new DBDataMngmt(getApplicationContext());
                                   //Inserting lap time data into local DB.
             dbDataMngmt.insertMultipleRecordsIntoLapTimeTable(lapInfo);
-            Toast.makeText(this, "Lap Time Data Saves", Toast.LENGTH_SHORT).show();
+                                  //Setting bool var to false to no save data if
+                                  //the back button is clicked
+            dataToSavedOnBackBtn =  false;
+            Toast.makeText(this, "Lap Time Data Saved", Toast.LENGTH_SHORT).show();
         }
         else {
+                                  //Setting bool var to false to no save data if
+                                  //the back button is clicked
+            dataToSavedOnBackBtn =  false;
                                   //User answers no to save data into DB.
             Toast.makeText(this, "Lap Time was NOT saved.", Toast.LENGTH_SHORT).show();
         }
@@ -356,6 +364,9 @@ public class MainActivity extends FragmentActivity
                             listVwAdaptador.updateValues(arrStrLaps);
                             counter = 0;
                             boolIsDataToSave = false;
+                                  //Setting bool var to false to no save data if
+                                  //the back button is clicked.
+                            dataToSavedOnBackBtn = false;
                         }
                     }
                                   //Setting the chronometer state to stopped or
@@ -449,6 +460,10 @@ public class MainActivity extends FragmentActivity
                                   //Letting app know that there is new lap time
                                   //data to save.
                     boolIsDataToSave = true;
+                                  //Setting bool var to true to let app know that
+                                  //lap data may be save if the back button is
+                                  //clicked.
+                    dataToSavedOnBackBtn = true;
                                   //Checking that the number of set lap times is OK.
                                   //Only 20 lap time marks are allowed.
                     if (counter < arrStrLaps.length) {
@@ -497,7 +512,7 @@ public class MainActivity extends FragmentActivity
 
         }   //End of onClick() function
 
-    }   //End of class
+    }   //End of the BtnOnClickListener class
 
 
 
@@ -542,6 +557,31 @@ public class MainActivity extends FragmentActivity
 
 
 
+    /**
+     * onBackPressed() callback function is used to saved data when the device
+     * back button is pressed and the user has forgotten to saved the laps data.
+     * The app does not make any question to the user about to save or no to save
+     * the lap data. It just perform a click on the lap button to get the last
+     * lap time and then it saves the data.
+     */
+    @Override
+    public void onBackPressed() {
+                                  //Deciding whether or no to save lap data.
+        if (dataToSavedOnBackBtn == true) {
+                                  //Getting the last lap time programmatically.
+            btnLaps.performClick();
+                                  //Saving lap data when the back button is clicked.
+            DBDataMngmt dbDataMngmt = new DBDataMngmt(getApplicationContext());
+            dbDataMngmt.insertMultipleRecordsIntoLapTimeTable(lapInfo);
+        }
+                                  //Setting bool var to false to no save data if
+                                  //the back button is clicked.
+        dataToSavedOnBackBtn = false;
+        super.onBackPressed();
+
+    }   // End of the onBackPressed() callback function
+
+
 
     /**
      * The l(String) function is used only to debug this class. It uses the
@@ -554,6 +594,8 @@ public class MainActivity extends FragmentActivity
     private void l(String str){
         Log.d("NICKY", this.getClass().getSimpleName() + " -> " + str);
     }
+
+
 
 
 }   //End of the MainActivity Class

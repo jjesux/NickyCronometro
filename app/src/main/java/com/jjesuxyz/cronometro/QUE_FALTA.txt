@@ -1,5 +1,17 @@
 
+La fecha de hoy es 9 de noviembre de 2020, como a las 11:26 am.
 
+Pues aparentemente trabaja bien en lo que se refiere a guardar la lap data en
+la base de datos, antes de que la aplicacion se detenga cuando el device back
+button se presiona, por error o vuluntariamente. Y creo que no hay duplicidad
+de data en la base de datos aun con esta nueva abilidad de la aplicacion.
+
+
+
+
+
+
+*******************************************************************************
 La fecha de hoy es 7 de noviembre de 2020, como a las 12.00 pm.
 
 Pues los valores que usan para dibujar los circulos ya estan concentrados en el
@@ -15,12 +27,16 @@ Faltaria tambien ver como hacer para que la app consiga el lugar donde se
 esta corriendo o haciendo ejercicio, asi como tambien ver la forma de
 cancular the distancia que se habria recorrido durante el ejercicio.
 
+-------------------------------------------------------------------------------
+NOTE: es 8 de noviembre de 2020, como a las 9:37 pm. A esta hora ya se
+compuso el problema al que se refiere el siguiente parrafo.
+
 Faltaria ver como hacer para que si esta contando el tiempo y clickea el
 boton de back no se pierda el conteo que esta realizando.  Porque hasta
 este momento es lo que pasa. Si esta contando el tiempo y se presiona el
 boton back se pierde la informacion del tiempo contado. No para la app
 completamente pero si se pierde la informacion.
-
+-------------------------------------------------------------------------------
 
 
 *******************************************************************************
